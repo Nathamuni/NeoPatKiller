@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
 public class App extends JFrame{
+
     private JButton button1;
     private JPanel panel1;
     private JTextArea textArea;
@@ -16,38 +17,11 @@ public class App extends JFrame{
     private int count;
     String count1;
     public App() {
-        setTitle("Neopat killer");
-        setSize(450,300);
-        setLocationRelativeTo(null);
 
-//
-//
-//
-//        getContentPane().add(countdownLabel);
-//
-//        count = 10;
-//        countdownLabel.setText(Integer.toString(count));
-//
-//        Timer timer = new Timer(1000, new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                count--;
-//                countdownLabel.setText(Integer.toString(count));
-//
-//                if (count == 0) {
-//                    ((Timer) e.getSource()).stop();
-//                    JOptionPane.showMessageDialog(null, "Time's up!");
-//                    System.exit(0);
-//                }
-//            }
-//        });
-//        timer.start();
-//
-//        setSize(500, 800);
-//        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        setLocationRelativeTo(null);
-//        setVisible(true);
-//
+        setTitle("Neopat killer");
+
+
+        setLocationRelativeTo(null);
 
 
 
@@ -90,50 +64,160 @@ public class App extends JFrame{
 
                                 for (int i = 0; i < input.length(); i++) {
                                     char c = input.charAt(i);
-                                    int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
-                                    robot.keyPress(keyCode);
-                                    robot.keyRelease(keyCode);
+
+                                    if (c=='!') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_1);
+                                        robot.keyRelease(KeyEvent.VK_1);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='@') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_2);
+                                        robot.keyRelease(KeyEvent.VK_2);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='#') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_3);
+                                        robot.keyRelease(KeyEvent.VK_3);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='$') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_4);
+                                        robot.keyRelease(KeyEvent.VK_4);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='%') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_5);
+                                        robot.keyRelease(KeyEvent.VK_5);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='^') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_6);
+                                        robot.keyRelease(KeyEvent.VK_6);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='&') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_7);
+                                        robot.keyRelease(KeyEvent.VK_7);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='*') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_8);
+                                        robot.keyRelease(KeyEvent.VK_8);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='(') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_9);
+                                        robot.keyRelease(KeyEvent.VK_9);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c==')') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_0);
+                                        robot.keyRelease(KeyEvent.VK_0);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='_') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_MINUS);
+                                        robot.keyRelease(KeyEvent.VK_MINUS);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='+') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_EQUALS);
+                                        robot.keyRelease(KeyEvent.VK_EQUALS);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if(c=='{') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_OPEN_BRACKET); // for {
+                                        robot.keyRelease(KeyEvent.VK_OPEN_BRACKET);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (input.equals("}")) {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_CLOSE_BRACKET); // for }
+                                        robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    }else if (c=='?') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_SLASH);
+                                        robot.keyRelease(KeyEvent.VK_SLASH);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c=='"') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_QUOTE);
+                                        robot.keyRelease(KeyEvent.VK_QUOTE);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c==':') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_SEMICOLON);
+                                        robot.keyRelease(KeyEvent.VK_SEMICOLON);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c =='<') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_COMMA);
+                                        robot.keyRelease(KeyEvent.VK_COMMA);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    } else if (c =='>') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_PERIOD);
+                                        robot.keyRelease(KeyEvent.VK_PERIOD);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    }else if (c =='|') {
+                                        robot.keyPress(KeyEvent.VK_SHIFT);
+                                        robot.keyPress(KeyEvent.VK_BACK_SLASH);
+                                        robot.keyRelease(KeyEvent.VK_BACK_SLASH);
+                                        robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    }
+                                    else{
+                                        if((int)c >= 65 && (int)c <= 90){
+                                            robot.keyPress(KeyEvent.VK_SHIFT);
+                                            int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
+                                            robot.keyPress(keyCode);
+                                            robot.keyRelease(keyCode);
+                                            robot.keyRelease(KeyEvent.VK_SHIFT);
+                                        }else {
+                                            int keyCode = KeyEvent.getExtendedKeyCodeForChar(c);
+                                            robot.keyPress(keyCode);
+                                            robot.keyRelease(keyCode);
+                                        }
+                                    }
+
                                 }
 
-                                ((Timer) e.getSource()).stop();
-                                System.exit(0);
-                            }
+                                //((Timer) e.getSource()).stop(); N \n");" +
+
+                                System.exit(0);}
                         }
                     });
                     timer.start();
                     //JOptionPane.showMessageDialog(null,"Created by Nathamuni");
-
-
                 }
                 catch(Exception exep){
 
                 }
-
 // JOptionPane.showMessageDialog(null,"Created by Nathamuni");
             }
         });
     }
 
 
-
     public static void main(String[] args) {
 //        JTextArea textArea = new JTextArea();
 //        JScrollPane scrollPane = new JScrollPane(textArea);
 //        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         JFrame frame = new JFrame("App");
-        frame.setLayout(new FlowLayout());
-JTextArea ta = new JTextArea(10,15);
+        frame.setLayout(null);
 
-JScrollPane sp = new JScrollPane(ta,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-
-frame.add(sp);
         frame.setContentPane(new App().panel1);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
+
         frame.setVisible(true);
+
     }
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
     }
 }
+
