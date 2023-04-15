@@ -211,9 +211,8 @@ public class App extends JFrame {
 
                                 }
 
-                                //((Timer) e.getSource()).stop(); N \n");" +
-
-                                System.exit(0);
+                                ((Timer) e.getSource()).stop();
+//                                System.exit(0);
                             }
                         }
                     });
