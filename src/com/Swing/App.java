@@ -6,53 +6,82 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-public class App extends JFrame{
+public class App extends JFrame {
 
-    private JButton button1;
+    private JButton button1,clearButton;
     private JPanel panel1;
     private JTextArea textArea;
-    private JLabel createdByNathamuniLabel,countdownLabel;
+    private JLabel createdByNathamuniLabel,countdownLabel,countLabel;
     private JLabel labell;
     private JTextField textField1;
     private int count;
     String count1;
+
     public App() {
-
         setTitle("Neopat killer");
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        panel1.setLayout(new BorderLayout());
+        createdByNathamuniLabel = new JLabel("  Created by Nathamuni");
+        createdByNathamuniLabel.setFont(new Font("Serif", Font.BOLD, 16));
+        panel1.add(createdByNathamuniLabel, BorderLayout.NORTH);
+        textArea = new JTextArea(20, 40);
 
 
-        setLocationRelativeTo(null);
+
+        // Create a scrollable JTextArea
+
+        JScrollPane scrollPane = new JScrollPane(textArea);
+        panel1.add(scrollPane, BorderLayout.CENTER);
+
+        JPanel buttonsPanel = new JPanel();
+
+        button1.setMnemonic(KeyEvent.VK_S);
+        buttonsPanel.add(button1);
 
 
+        clearButton.setMnemonic(KeyEvent.VK_C);
+        buttonsPanel.add(clearButton);
 
+        clearButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                textArea.setText("");
+            }
+        });
+
+        textField1 = new JTextField(8);
+
+        //textField1.setSize(40, 50);
+        buttonsPanel.add(textField1);
+
+        countLabel = new JLabel("Enter Countdown value in sec");
+
+        buttonsPanel.add(countLabel);
+        panel1.add(buttonsPanel, BorderLayout.SOUTH);
+
+// Add the buttonsPanel to the panel1's SOUTH position
+
+
+        countdownLabel = new JLabel();
+        getContentPane().add(countdownLabel);
 
         button1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//                String s = textArea.getText();
-
-
-                try{
-                    countdownLabel = new JLabel();
-                    getContentPane().add(countdownLabel);
+                try {
 
                     count1 = textField1.getText();
-//                    count=10;
-                    count= Integer.parseInt(count1);
+                    count = Integer.parseInt(count1);
                     Thread.sleep(count);
-                    countdownLabel.setText(Integer.toString(count));
 
+                    countdownLabel.setText(Integer.toString(count));
                     Timer timer = new Timer(1000, new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            labell.setText(Integer.toString(count));
-                            // JOptionPane.showMessageDialog(null,count);
 
                             count--;
-                            countdownLabel.setText(Integer.toString(count));
-
+                            countLabel.setText("Count: " + count);
                             if (count <= 0) {
-
 
                                 Robot robot = null;
                                 try {
@@ -60,7 +89,7 @@ public class App extends JFrame{
                                 } catch (AWTException ex) {
 
                                 }
-                                String input = textArea.getText(); // The input text to type
+                                String input = textArea.getText();
 
                                 for (int i = 0; i < input.length(); i++) {
                                     char c = input.charAt(i);
@@ -130,7 +159,7 @@ public class App extends JFrame{
                                         robot.keyPress(KeyEvent.VK_OPEN_BRACKET); // for {
                                         robot.keyRelease(KeyEvent.VK_OPEN_BRACKET);
                                         robot.keyRelease(KeyEvent.VK_SHIFT);
-                                    } else if (input.equals("}")) {
+                                    } else if (c=='}') {
                                         robot.keyPress(KeyEvent.VK_SHIFT);
                                         robot.keyPress(KeyEvent.VK_CLOSE_BRACKET); // for }
                                         robot.keyRelease(KeyEvent.VK_CLOSE_BRACKET);
@@ -184,40 +213,29 @@ public class App extends JFrame{
 
                                 //((Timer) e.getSource()).stop(); N \n");" +
 
-                                System.exit(0);}
+                                System.exit(0);
+                            }
                         }
                     });
                     timer.start();
-                    //JOptionPane.showMessageDialog(null,"Created by Nathamuni");
+                } catch (Exception exep) {
+                    exep.printStackTrace();
                 }
-                catch(Exception exep){
+            }
+        });
 
-                }
-// JOptionPane.showMessageDialog(null,"Created by Nathamuni");
+        setContentPane(panel1);
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new App();
             }
         });
     }
-
-
-    public static void main(String[] args) {
-//        JTextArea textArea = new JTextArea();
-//        JScrollPane scrollPane = new JScrollPane(textArea);
-//        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-
-        JFrame frame = new JFrame("App");
-        frame.setLayout(null);
-
-        frame.setContentPane(new App().panel1);
-
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.pack();
-
-        frame.setVisible(true);
-
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
-    }
 }
-
