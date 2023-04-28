@@ -194,6 +194,9 @@ public class App extends JFrame {
                                         robot.keyPress(KeyEvent.VK_BACK_SLASH);
                                         robot.keyRelease(KeyEvent.VK_BACK_SLASH);
                                         robot.keyRelease(KeyEvent.VK_SHIFT);
+                                    }else if (c =='\'') {
+                                        robot.keyPress(KeyEvent.VK_QUOTE);
+                                        robot.keyRelease(KeyEvent.VK_QUOTE);
                                     }
                                     else{
                                         if((int)c >= 65 && (int)c <= 90){
@@ -208,7 +211,11 @@ public class App extends JFrame {
                                             robot.keyRelease(keyCode);
                                         }
                                     }
-
+                                    try {
+                                        Thread.sleep(10);
+                                    } catch (InterruptedException ex) {
+                                        ex.printStackTrace();
+                                    }
                                 }
 
                                 ((Timer) e.getSource()).stop();
